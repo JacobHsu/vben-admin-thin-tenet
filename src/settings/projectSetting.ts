@@ -30,7 +30,10 @@ const setting: ProjectConfig = {
   permissionCacheType: CacheTypeEnum.LOCAL,
 
   // Session timeout processing
-  sessionTimeoutProcessing: SessionTimeoutProcessingEnum.ROUTE_JUMP,
+  // 会话超时处理方案
+  // SessionTimeoutProcessingEnum.ROUTE_JUMP: 路由跳转到登录页
+  // SessionTimeoutProcessingEnum.PAGE_COVERAGE: 生成登录弹窗，覆盖当前页面
+  sessionTimeoutProcessing: SessionTimeoutProcessingEnum.PAGE_COVERAGE,
 
   // color
   themeColor: primaryColor,
@@ -64,7 +67,8 @@ const setting: ProjectConfig = {
     // theme
     theme: ThemeEnum.LIGHT,
     // Whether to enable the lock screen function
-    useLockPage: true,
+    // 开启锁屏功能
+    useLockPage: false, // true,
     // Whether to show the full screen button
     showFullScreen: true,
     // Whether to show the document button
@@ -124,7 +128,7 @@ const setting: ProjectConfig = {
     // Is it possible to drag and drop sorting tabs
     canDrag: true,
     // Turn on quick actions
-    showQuick: true,
+    showQuick: false, // true
     // Whether to show the refresh button
     showRedo: true,
     // Whether to show the collapse button
@@ -149,7 +153,8 @@ const setting: ProjectConfig = {
   },
 
   // Whether to enable KeepAlive cache is best to close during development, otherwise the cache needs to be cleared every time
-  openKeepAlive: true,
+  // 是否开启KeepAlive缓存  开发时候最好关闭,不然每次都需要清除缓存
+  openKeepAlive: import.meta.env.PROD ? true : false,
 
   // Automatic screen lock time, 0 does not lock the screen. Unit minute default 0
   lockTime: 0,
