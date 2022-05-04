@@ -24,6 +24,9 @@ const setting: ProjectConfig = {
   settingButtonPosition: SettingButtonPositionEnum.AUTO,
 
   // Permission mode
+  // https://vvbin.cn/doc-next/guide/auth.html
+  // permissionMode: PermissionModeEnum.ROLE,
+  // permissionMode: PermissionModeEnum.BACK,
   permissionMode: PermissionModeEnum.ROUTE_MAPPING,
 
   // Permission-related cache is stored in sessionStorage or localStorage
