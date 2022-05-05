@@ -17,8 +17,6 @@ export function useRootSetting() {
 
   const getOpenKeepAlive = computed(() => appStore.getProjectConfig.openKeepAlive);
 
-  const getSettingButtonPosition = computed(() => appStore.getProjectConfig.settingButtonPosition);
-
   const getCanEmbedIFramePage = computed(() => appStore.getProjectConfig.canEmbedIFramePage);
 
   const getPermissionMode = computed(() => appStore.getProjectConfig.permissionMode);
@@ -28,8 +26,6 @@ export function useRootSetting() {
   const getContentMode = computed(() => appStore.getProjectConfig.contentMode);
 
   const getUseOpenBackTop = computed(() => appStore.getProjectConfig.useOpenBackTop);
-
-  const getShowSettingButton = computed(() => appStore.getProjectConfig.showSettingButton);
 
   const getUseErrorHandle = computed(() => appStore.getProjectConfig.useErrorHandle);
 
@@ -69,7 +65,6 @@ export function useRootSetting() {
   return {
     setRootSetting,
 
-    getSettingButtonPosition,
     getFullContent,
     getColorWeak,
     getGrayMode,
@@ -83,7 +78,6 @@ export function useRootSetting() {
     getShowBreadCrumb,
     getShowBreadCrumbIcon,
     getUseOpenBackTop,
-    getShowSettingButton,
     getShowFooter,
     getContentMode,
     getLockTime,

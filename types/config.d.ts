@@ -4,7 +4,6 @@ import {
   PermissionModeEnum,
   ThemeEnum,
   RouterTransitionEnum,
-  SettingButtonPositionEnum,
   SessionTimeoutProcessingEnum,
 } from '/@/enums/appEnum';
 
@@ -81,12 +80,8 @@ export interface TransitionSetting {
 export interface ProjectConfig {
   // Storage location of permission related information
   permissionCacheType: CacheTypeEnum;
-  // Whether to show the configuration button
-  showSettingButton: boolean;
   // Whether to show the theme switch button
   showDarkModeToggle: boolean;
-  // Configure where the button is displayed
-  settingButtonPosition: SettingButtonPositionEnum;
   // Permission mode
   permissionMode: PermissionModeEnum;
   // Session timeout processing
