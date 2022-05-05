@@ -54,7 +54,6 @@ export interface HeaderSetting {
   // Show document button
   showDoc: boolean;
   // Show message center button
-  showNotice: boolean;
   showSearch: boolean;
 }
 

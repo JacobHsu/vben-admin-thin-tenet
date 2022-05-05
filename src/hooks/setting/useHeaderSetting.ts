@@ -62,8 +62,6 @@ export function useHeaderSetting() {
 
   const getShowFullScreen = computed(() => appStore.getHeaderSetting.showFullScreen);
 
-  const getShowNotice = computed(() => appStore.getHeaderSetting.showNotice);
-
   const getShowBread = computed(() => {
     return (
       unref(getMenuMode) !== MenuModeEnum.HORIZONTAL && unref(getShowBreadCrumb) && !unref(getSplit)
@@ -90,7 +88,6 @@ export function useHeaderSetting() {
     getHeaderTheme,
     getUseLockPage,
     getShowFullScreen,
-    getShowNotice,
     getShowBread,
     getShowContent,
     getShowHeaderLogo,
