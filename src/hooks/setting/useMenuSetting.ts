@@ -8,8 +8,6 @@ import { SIDE_BAR_MINI_WIDTH, SIDE_BAR_SHOW_TIT_MINI_WIDTH } from '/@/enums/appE
 import { MenuModeEnum, MenuTypeEnum, TriggerEnum } from '/@/enums/menuEnum';
 import { useFullContent } from '/@/hooks/web/useFullContent';
 
-const mixSideHasChildren = ref(false);
-
 export function useMenuSetting() {
   const { getFullContent: fullContent } = useFullContent();
   const appStore = useAppStore();
@@ -43,13 +41,9 @@ export function useMenuSetting() {
 
   const getMenuBgColor = computed(() => appStore.getMenuSetting.bgColor);
 
-  const getMixSideTrigger = computed(() => appStore.getMenuSetting.mixSideTrigger);
-
   const getCanDrag = computed(() => appStore.getMenuSetting.canDrag);
 
   const getAccordion = computed(() => appStore.getMenuSetting.accordion);
-
-  const getMixSideFixed = computed(() => appStore.getMenuSetting.mixSideFixed);
 
   const getTopMenuAlign = computed(() => appStore.getMenuSetting.topMenuAlign);
 
@@ -83,20 +77,11 @@ export function useMenuSetting() {
     return unref(getMenuMode) === MenuModeEnum.HORIZONTAL;
   });
 
-  const getIsMixSidebar = computed(() => {
-    return unref(getMenuType) === MenuTypeEnum.MIX_SIDEBAR;
-  });
-
   const getIsMixMode = computed(() => {
     return unref(getMenuMode) === MenuModeEnum.INLINE && unref(getMenuType) === MenuTypeEnum.MIX;
   });
 
   const getRealWidth = computed(() => {
-    if (unref(getIsMixSidebar)) {
-      return unref(getCollapsed) && !unref(getMixSideFixed)
-        ? unref(getMiniWidthNumber)
-        : unref(getMenuWidth);
-    }
     return unref(getCollapsed) ? unref(getMiniWidthNumber) : unref(getMenuWidth);
   });
 
@@ -109,9 +94,10 @@ export function useMenuSetting() {
     const width =
       unref(getIsTopMenu) || !unref(getShowMenu) || (unref(getSplit) && unref(getMenuHidden))
         ? 0
-        : unref(getIsMixSidebar)
-        ? (unref(getCollapsed) ? SIDE_BAR_MINI_WIDTH : SIDE_BAR_SHOW_TIT_MINI_WIDTH) +
-          (unref(getMixSideFixed) && unref(mixSideHasChildren) ? unref(getRealWidth) : 0)
+        : 0
+        ? unref(getCollapsed)
+          ? SIDE_BAR_MINI_WIDTH
+          : SIDE_BAR_SHOW_TIT_MINI_WIDTH
         : unref(getRealWidth);
 
     return `calc(100% - ${unref(width)}px)`;
@@ -157,10 +143,6 @@ export function useMenuSetting() {
     getMenuBgColor,
     getShowSidebar,
     getIsMixMode,
-    getIsMixSidebar,
     getCloseMixSidebarOnChange,
-    getMixSideTrigger,
-    getMixSideFixed,
-    mixSideHasChildren,
   };
 }

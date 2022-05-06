@@ -28,8 +28,6 @@ export interface MenuSetting {
   accordion: boolean;
   closeMixSidebarOnChange: boolean;
   collapsedShowTitle: boolean;
-  mixSideTrigger: MixSidebarTriggerEnum;
-  mixSideFixed: boolean;
 }
 
 export interface MultiTabsSetting {

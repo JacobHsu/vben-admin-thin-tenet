@@ -18,8 +18,7 @@ export function useHeaderSetting() {
       !unref(getFullContent) &&
       unref(getShowMixHeaderRef) &&
       unref(getShowHeader) &&
-      !unref(getIsTopMenu) &&
-      !unref(getIsMixSidebar)
+      !unref(getIsTopMenu)
     );
   });
 
@@ -27,21 +26,11 @@ export function useHeaderSetting() {
 
   const getShowInsetHeaderRef = computed(() => {
     const need = !unref(getFullContent) && unref(getShowHeader);
-    return (
-      (need && !unref(getShowMixHeaderRef)) ||
-      (need && unref(getIsTopMenu)) ||
-      (need && unref(getIsMixSidebar))
-    );
+    return (need && !unref(getShowMixHeaderRef)) || (need && unref(getIsTopMenu));
   });
 
-  const {
-    getMenuMode,
-    getSplit,
-    getShowHeaderTrigger,
-    getIsSidebarType,
-    getIsMixSidebar,
-    getIsTopMenu,
-  } = useMenuSetting();
+  const { getMenuMode, getSplit, getShowHeaderTrigger, getIsSidebarType, getIsTopMenu } =
+    useMenuSetting();
   const { getShowBreadCrumb, getShowLogo } = useRootSetting();
 
   const getShowMixHeaderRef = computed(() => !unref(getIsSidebarType) && unref(getShowHeader));
@@ -69,7 +58,7 @@ export function useHeaderSetting() {
   });
 
   const getShowHeaderLogo = computed(() => {
-    return unref(getShowLogo) && !unref(getIsSidebarType) && !unref(getIsMixSidebar);
+    return unref(getShowLogo) && !unref(getIsSidebarType);
   });
 
   const getShowContent = computed(() => {
